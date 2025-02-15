@@ -24,7 +24,7 @@ answerElement.textContent = flashcard[currentCard].answer;
 flashcardElement.classList.remove('is-flipped');
 }
 
-document.getElementById('flip-card').addEventListener('click', () => {
+document.getElementById('flashcard').addEventListener('click', () => {
 flashcardElement.classList.toggle('is-flipped');
 });
 
