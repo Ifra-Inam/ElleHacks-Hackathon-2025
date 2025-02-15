@@ -1,0 +1,63 @@
+.flex-container {
+    display: grid;
+    place-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.playbutton {
+    position: absolute;
+    width: 300px;
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+.playbutton:hover {
+    filter: brightness(0.8);
+  }
+
+.welcome {
+    margin: auto;
+    width: 45.1%;
+    height: 45rem;
+    background-color: #89A15B;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+button {
+    text-align: center;
+    padding: 10px 20px;
+    border: none;
+    font-size: 40px;
+    width: 200px;     
+    height: 80px;     
+    display: flex;     
+    align-items: center;  
+    justify-content: center;
+    border: none;
+    background-color: #344a3d;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(0.8);
+}
+#startbutton {
+    font-size: 40px;
+}
+
+
+@font-face {
+    font-family: 'Lazydog';
+    src: url('assets/lazy_dog.ttf') format('truetype');
+}
+
+.welcome h1 {
+    font-family: 'Lazydog', sans-serif;
+    font-size: 100px;
+    text-align: center;
+    color: #344a3d;
+}
