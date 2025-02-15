@@ -1,15 +1,15 @@
-document.addEventListener('DOMContentLoaded', () -> {
+document.addEventListener('DOMContentLoaded', () => {
 const flashcard =[
-{ question: "Dragon", answer: "display photo here" },
-{ question: "Fire", answer: "display photo here" },
-{ question: "Water", answer: "display photo here" },
-{ question: "Brave", answer: "display photo here" },
-{ question: "Castle", answer: "display photo here" },
-{ question: "Hero", answer: "display photo here" },
-{ question: "Treasure", answer: "display photo here" },
-{ question: "Cave", answer: "display photo here" },
-{ question: "Magic", answer: "display photo here" },
-{ question: "Quest", answer: "display photo here" },
+{ question: "photo", answer: "Dragon" },
+{ question: "photo", answer: "Fire" },
+{ question: "photo", answer: "Water" },
+{ question: "photo", answer: "Brave" },
+{ question: "photo", answer: "Castle" },
+{ question: "photo", answer: "Hero" },
+{ question: "photo", answer: "Treasure" },
+{ question: "photo", answer: "Cave" },
+{ question: "photo", answer: "Magic" },
+{ question: "photo", answer: "Quest" },
 ];
 
 let currentCard = 0;
@@ -24,11 +24,11 @@ answerElement.textContent = flashcard[currentCard].answer;
 flashcardElement.classList.remove('is-flipped');
 }
 
-document.getElementById('flip-card').addEventListener('click', () -> {
+document.getElementById('flip-card').addEventListener('click', () => {
 flashcardElement.classList.toggle('is-flipped');
 });
 
-document.getElementById('next card').addEventListener('click', () -> {
+document.getElementById('next-card').addEventListener('click', () => {
 currentCard = (currentCard + 1) % flashcard.length;
 displayCard();
 });
