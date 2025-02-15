@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>The Gem Quest | Map</title>
+        <link rel="stylesheet" href="index.css" title="style" /> 
+        <script src="index.js" defer="true"></script>
+    </head>
+    <body>
+        
+        <div id="background-map" style="display: grid; place-items: center">
+            <div class="navbar" style="border: 2px solid #89A15B; width: 41.5%; height: 4em; background-color: #89A15B">
+                <ul>
+                    <li><a>Inventory</a></li>
+                    <li><a>Profile</a></li>
+                </ul>
+            </div>
+            <img src="map.png" 
+            style="
+            margin-top: 4.5rem;
+            height: 45rem; 
+            position: absolute;
+            top: 0px;
+            z-index: -1;"/>
+            <div id="level1btn" 
+            onclick="goToLevel1()"
+            style="
+            width: 40px;
+            height: 40px;
+            position: relative;
+            top: 275px; right: 150px;"
+            ></div>
+        </div>
+        
 
+    </body>
+</html>
