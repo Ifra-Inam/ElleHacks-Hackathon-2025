@@ -1,3 +1,4 @@
+import { level, points } from './game.js';
 document.addEventListener("DOMContentLoaded", function () {
     const dropZone = document.getElementById("drop-zone");
     const shapes = document.querySelectorAll(".shape");
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (shapeList.length === 0) {
             alert("Congratulations! You completed the level!");
             gateImage.src = 'images/opencastle.png'
+            level += 1;
             return;
         }
 
@@ -66,10 +68,13 @@ document.addEventListener("DOMContentLoaded", function () {
         if (draggedShapeId === currentShape) {
             document.getElementById(draggedShapeId).remove();
             shapeList = shapeList.filter(shape => shape !== draggedShapeId);
+            points += 10
             alert("Correct!");
             setTimeout(startQuiz, 1000);
         } else {
+            points -= 10
             alert("Try again!");
         }
     });
 });
+module.exports = {level, points};

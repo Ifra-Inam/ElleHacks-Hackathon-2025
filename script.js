@@ -114,6 +114,7 @@ let points = 0;
             setupGame(); // Reset with the same words
         }
     }
-    module.exports = {level, points};
+    
     setupGame();
 });
+module.exports = {level, points};
