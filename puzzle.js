@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
             dropZone.style.display = "block";
             shapes.forEach(shape => {
                 shape.style.display = "inline-block";
-                shape.style.width = "120px"; // Make shapes larger
+                shape.style.width = "120px";
                 shape.style.height = "120px";
             });
 
             // Enlarge the gate image when the quiz starts
-            gateImage.style.width = "600px"; // Adjust as needed
+            gateImage.style.width = "600px";
             gateImage.style.height = "400px";
 
             // Pick a random shape and speak it
