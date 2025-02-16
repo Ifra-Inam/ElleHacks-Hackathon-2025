@@ -1,90 +1,79 @@
 document.addEventListener('DOMContentLoaded', () => {
-console.log("JavaScript file loaded");
-const flashcard =[
-{ question: "photo1", answer: "Dragon" },
-{ question: "photo2", answer: "Fire" },
-{ question: "photo3", answer: "Water" },
-{ question: "photo4", answer: "Brave" },
-{ question: "photo5", answer: "Castle" },
-{ question: "photo6", answer: "Hero" },
-{ question: "photo7", answer: "Treasure" },
-{ question: "photo8", answer: "Cave" },
-{ question: "photo9", answer: "Magic" },
-{ question: "photo10", answer: "Quest" },
-];
+    const flashcards = [
+        { question: '<img src="images/dragon.webp" alt="Dragon" style="width:300px; height:250px;">', answer: "Dragon" },
+        { question: '<img src="images/fire.png" alt="Fire" style="border: 2px solid black; width:auto; height:auto;>', answer: "Fire" },
+        { question: '<img src="images/water.jpg" alt="Water">', answer: "Water" },
+        { question: '<img src="images/brave.jpg" alt="Brave">', answer: "Brave" },
+        { question: '<img src="images/castle.png" alt="Castle">', answer: "Castle" },
+        { question: '<img src="images/hero.jpg" alt="Hero">', answer: "Hero" },
+        { question: '<img src="images/treasure.webp" alt="Treasure">', answer: "Treasure" },
+        { question: '<img src="images/cave.png" alt="Cave">', answer: "Cave" },
+        { question: '<img src="images/magic.jpg" alt="Magic">', answer: "Magic" },
+        { question: '<img src="images/quest.webp" alt="Quest">', answer: "Quest" }
+    ];
+    
+    let currentCard = 0;
+    
+    const flashcardElement = document.getElementById('flashcard');
+    const questionElement = document.getElementById('question');
+    const answerElement = document.getElementById('answer');
+    
+    function displayCard() {
+        // Use innerHTML for question since it contains an image tag
+        questionElement.innerHTML = flashcards[currentCard].question;
+        // Display answer as text (or you could use innerHTML if needed)
+        answerElement.textContent = flashcards[currentCard].answer;
+        flashcardElement.classList.remove('is-flipped');
+    }
+    
+    // Flip the flashcard when it's clicked
+    flashcardElement.addEventListener('click', () => {
+        flashcardElement.classList.toggle('is-flipped');
+    });
+    
+    document.getElementById('next-card').addEventListener('click', () => {
+        currentCard = (currentCard + 1) % flashcards.length;
+        displayCard();
+    });
+    
+    // Optionally, handle the record button here if needed
 
-let currentCard = 0;
+    const speakBtn = document.getElementById("speakAI");
+    const recordBtn = document.getElementById("record-card");
 
-const flashcardElement = document.getElementById('flashcard');
-const questionElement = document.getElementById('question');
-const answerElement = document.getElementById('answer');
+    // Function to make AI speak using Speech Synthesis API
+    function speakWord() {
+        const msg = new SpeechSynthesisUtterance(flashcards.answer);
+        window.speechSynthesis.speak(msg);
+        recordBtn.disabled = false;  // Enable the "Record" button after AI speaks
+    }
 
-function displayCard() {
-questionElement.textContent = flashcard[currentCard].question;
-answerElement.textContent = flashcard[currentCard].answer;
-flashcardElement.classList.remove('is-flipped');
-}
+    // Function to record user's voice and compare it
+    function recordWord() {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
 
-document.getElementById('flashcard').addEventListener('click', () => {
-flashcardElement.classList.toggle('is-flipped');
-});
+        recognition.start();
+        recognition.onresult = function(event) {
+            const spokenWord = event.results[0][0].transcript.trim();
+            console.log("You said: ", spokenWord);
 
-document.getElementById('next-card').addEventListener('click', () => {
-currentCard = (currentCard + 1) % flashcard.length;
-//once they reach to the last card, redirect to the quiz page
-if (currentCard === 0){
-window.location.href = 'quiz.html'; //redirect to the quiz page
-} else{
-displayCard();
-}
-});
+            // Compare the spoken word with the displayed word
+            if (spokenWord === flashcards.answer) {
+                alert("Hooray! You said it correctly.");
+            } else {
+                alert("Oops, try again! The word was: " + flashcards.answer);
+            }
+        };
 
-//audio setup
-let mediaRecorder;
-let audioChunks = [];
-let isRecording = false;
+        recognition.onerror = function() {
+            alert("Sorry, I couldn't recognize your speech. Try again.");
+        };
+    }
 
-const audioElement = document.querySelector('.playback');
-
-document.getElementById('record-card').addEventListener('click', async () => {
-if (!navigator.mediaDevices || !window.MediaRecorder){
-alert('It does not support required APIs');
-return;
-}
-try{
-console.log('Start');
-const micStream = await navigator.mediaDevices.getUserMedia({audio:true});
-
-mediaRecorder = new MediaRecorder(micStream);
-
-mediaRecorder.ondataavailable = event => {
-console.log('Audio data available');
-audioChunks.push(event.data);
-};
-
-mediaRecorder.onstop = () => {
-const audioBlob = new Blob(audioChunks, {type: 'audio/wav'});
-const audioUrl = URL.createObjectURL(audioBlob);
-const audio = new Audio(audioUrl);
-
-audioElement.src = audioUrl;
-audioElement.play();
-audioChunks = [];
-};
-
-if (isRecording) {
-mediaRecorder.stop();
-isRecording = false;
-document.getElementById('record-card').innerText = 'Record';
-} else{
-mediaRecorder.start();
-isRecording = true;
-document.getElementById('record-card').innerText = 'Stop';
-}
-} catch (error){
-alert('Please ensure your device has a microphone');
-}
-});
-
-displayCard();
+    // Event listeners
+    speakBtn.addEventListener("click", speakWord);
+    recordBtn.addEventListener("click", recordWord);
+    
+    displayCard();
 });
