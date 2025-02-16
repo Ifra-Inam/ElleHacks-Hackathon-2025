@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { question: '<img src="images/magic.jpg" alt="Magic">', answer: "Magic" },
         { question: '<img src="images/quest.webp" alt="Quest">', answer: "Quest" }
     ];
-
+let level = 0;
+let points = 0;
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -59,6 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const matchedElement = document.querySelector(`.draggable[data-word="${draggedWord}"]`);
                 if (matchedElement) {
                     matchedElement.remove();
+                    points += 10;
+                }
+                else {
+                    points -= 10;
                 }
 
                 checkCompletion();
@@ -102,12 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (allCorrect) {
             alert("Great job! Moving to the next level.");
+            level += 1;
             window.location.href = "map.html";
         } else {
             alert("Oops! Some matches were incorrect. Try again.");
             setupGame(); // Reset with the same words
         }
     }
-
+    module.exports = {level, points};
     setupGame();
 });
