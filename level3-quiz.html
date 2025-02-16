@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level 3</title>
+    <link rel="stylesheet" href="vocalno.css">
+</head>
+<body>
+<div class="volcano-container">
+    <h1>Explore the volcano!  </h1>
+    <!-- Volcano -->
+    <img id="volcano-image" src="images/volcano1.jpg" alt="before">
+    <img id="bakingsoda-image" src="images/bakingsoda.png" alt="bakingsoda">
+    <audio id="audio-player" style="display:none;"></audio>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const volcanoImage = document.getElementById('volcano-image');
+        const bakingSodaImage = document.getElementById('bakingsoda-image');
+        const hiddenButton = document.createElement('button');
+        hiddenButton.id = "speechButton";
+        hiddenButton.style.display = "none"; // Hide the button
+        document.body.appendChild(hiddenButton);
+
+
+        const narrationText = 'Watch as the volcano erupts! The pressure inside builds up, and soon the eruption happens. The lava flows out as we pour the baking soda into the volcano.';
+        const utterance = new SpeechSynthesisUtterance(narrationText);
+        utterance.lang = 'en-US';
+
+
+        const voices = speechSynthesis.getVoices();
+        if (voices.length > 0) {
+            utterance.voice = voices.find(voice => voice.lang === 'en-US');
+        }
+
+
+         hiddenButton.addEventListener('click', () => {
+        speechSynthesis.speak(utterance);
+    });
+
+
+    bakingSodaImage.addEventListener('animationstart', () => {
+        setTimeout(() => {
+            hiddenButton.click();
+        }, 500);
+    });
+
+
+    let speechFinished = false; // Flag to track speech completion
+
+
+    utterance.onend = () => {
+        clearTimeout(timeoutId);
+        speechFinished = true; // Set flag to true when speech finishes
+        checkAndRedirect(); // Call the check function
+    };
+
+
+    const timeoutId = setTimeout(() => {
+        speechFinished = true; // Set flag even if timeout occurs
+        checkAndRedirect(); // Call the check function
+    }, utterance.text.length * 50);
+
+
+    function checkAndRedirect() {
+        if (speechFinished) { // Only redirect if speech is finished
+            endEruption();
+        }
+    }
+
+
+    function endEruption() {
+        alert("The eruption is complete!");
+        window.location.href = 'nextPage.html'; // Now this will work correctly
+    }
+ });
+
+
+    window.addEventListener('load', () => {
+        console.log("Page loaded");
+    });
+</script>
+</body>
+</html>
+
