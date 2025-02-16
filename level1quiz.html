@@ -1,0 +1,79 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script>
+        function playbutton() {
+            alert("Play button clicked!"); // Replace with your actual function logic
+        }
+    </script>
+</head>
+<body>
+   
+    
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adventure Matching Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Match the Word to the Picture!</h1>
+  <div class="game-container">
+    <!-- Each dropzone corresponds to one word -->
+    <div class="dropzone" data-word="Dragon">
+      <img src="images/dragon.png" alt="Dragon">
+    </div>
+    <div class="dropzone" data-word="Fire">
+      <img src="images/fire.png" alt="Fire">
+    </div>
+    <div class="dropzone" data-word="Water">
+      <img src="images/water.png" alt="Water">
+    </div>
+    <div class="dropzone" data-word="Brave">
+      <img src="images/brave.png" alt="Brave">
+    </div>
+    <div class="dropzone" data-word="Castle">
+      <img src="images/castle.png" alt="Castle">
+    </div>
+    <div class="dropzone" data-word="Hero">
+      <img src="images/hero.png" alt="Hero">
+    </div>
+    <div class="dropzone" data-word="Treasure">
+      <img src="images/treasure.png" alt="Treasure">
+    </div>
+    <div class="dropzone" data-word="Cave">
+      <img src="images/cave.png" alt="Cave">
+    </div>
+    <div class="dropzone" data-word="Magic">
+      <img src="images/magic.png" alt="Magic">
+    </div>
+    <div class="dropzone" data-word="Quest">
+      <img src="images/quest.png" alt="Quest">
+    </div>
+  </div>
+
+  <div class="word-container">
+    <!-- Draggable words -->
+    <div class="draggable" draggable="true" data-word="Dragon">Dragon</div>
+    <div class="draggable" draggable="true" data-word="Fire">Fire</div>
+    <div class="draggable" draggable="true" data-word="Water">Water</div>
+    <div class="draggable" draggable="true" data-word="Brave">Brave</div>
+    <div class="draggable" draggable="true" data-word="Castle">Castle</div>
+    <div class="draggable" draggable="true" data-word="Hero">Hero</div>
+    <div class="draggable" draggable="true" data-word="Treasure">Treasure</div>
+    <div class="draggable" draggable="true" data-word="Cave">Cave</div>
+    <div class="draggable" draggable="true" data-word="Magic">Magic</div>
+    <div class="draggable" draggable="true" data-word="Quest">Quest</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
