@@ -69,6 +69,22 @@
     top: 275px; right: 150px;
 }
 
+#level2-btn {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: 175px; left: 25px;
+    border: 2px solid black;
+}
+
+#level3-btn {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: 245px; left: 155px;
+    border: 2px solid black;
+}
+
 /* LEVEL 1 WELCOME PAGE */
 .welcome {
     margin: auto;
