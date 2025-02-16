@@ -1,18 +1,79 @@
-.volcano-image {
-    width: auto;
-    height: 450px;
+.volcano-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    text-align: center;
+    padding-top: 50px;
 }
- h1 {
-      color: #344a3d;
+
+#volcano-image {
+    width: 1200px;
+    height: auto;
+    position: absolute;
+    right: 20px;
+    bottom: 100px;
+    z-index: 1;
+    animation: changeState 30s forwards;
+}
+
+#bakingsoda-image {
+      width: 120px;
+      height: auto;
+      position: absolute;
+      bottom: 80px;
+      left: 10%;
+      z-index: 2;
+      animation: pourBakingSoda 30s ease-in-out forwards;
+}
+
+h1 {
+    color: #344a3d;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+@keyframes pourBakingSoda {
+    0% {
+        left: 10%;
+        bottom: 30px;
     }
- body {
-          margin: 0;
-          height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: white;
-          color: white;
-          font-family: Arial, sans-serif;
-          text-align: center;
- }
+    15% {
+        left: 52%;
+        bottom: 710px;
+        transform: rotate(0deg);
+    }
+    20% {
+        left: 48%;
+        bottom: 665px;
+        transform: rotate(80deg);
+    }
+    24% {
+    transform: rotate(0deg);
+    left: 10%
+    bottom: 30px;
+    }
+    }
+    @keyframes changeState{
+    0% {
+            content: url('images/volcano1.jpg');
+    }
+    75% {
+    content: url('images/volcano3.jpg');
+    }
+     100% {
+        content: url('images/volcano3.jpg');
+        }
+    }
