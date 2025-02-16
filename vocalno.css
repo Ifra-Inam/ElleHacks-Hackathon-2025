@@ -30,6 +30,10 @@
       animation: pourBakingSoda 30s ease-in-out forwards;
 }
 
+#speechButton {
+    display: none;
+}
+
 h1 {
     color: #344a3d;
     position: absolute;
