@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             // Compare the spoken word with the displayed word
-            if (spokenWord.toLowerCase().trim() === flashcards[currentCard].answer.toLowerCase().trim()) {
+            if (spokenWord.toLowerCase().trim() === flashcards[currentCard].answer.toLowerCase().trim() + '.') {
                 alert("Hooray! You said it correctly.");
             } else {
                 alert("Oops, try again! The word was: " + flashcards[currentCard].answer);
