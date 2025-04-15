@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+    <link rel="stylesheet" href="card.css">
+    <script src="flashcards.js" defer></script>
+</head>
+<body>
+<div class="game_content">
+  <h1>Learning Time!</h1>
+  <div id="flashcard" class="flashcard">
+      <div class="front">
+          <p id="question"></p>
+      </div>
+      <div class="back">
+          <p id="answer"></p>
+      </div>
+  </div>
+  <button id="speakAI">Speak</button>
+  <button id="record-card">Record</button>
+  <button id="next-card">Next</button>
+  <button id="go-To-Quiz" onclick="goToLevel1Quiz()">GO TO QUIZ</button>
+</div>
+</body>
+</html>
