@@ -13,10 +13,6 @@ function goToLevel3() {
 function goToFlashcards() {
     window.location.href = "level1-flashcards.html";
 }
-
-function goToLevel1Quiz() {
-    window.location.href = "level1-quiz.html";
-}
 function goToLevel2Quiz() {
     window.location.href = "level2-quiz.html";
 }
