@@ -5,7 +5,9 @@
         <title>The Gem Quest | Map</title>
         <link rel="stylesheet" href="index.css" title="style" /> 
         <script src="index.js" defer="true"></script>
+    
     </head>
+    <script></script>
     <body>
         
         <div id="background-map" style="display: grid; place-items: center;">
@@ -15,23 +17,37 @@
                     <li><a>Profile</a></li>
                 </ul>
             </div>
-            <img src="map.png" 
+            <img src="map.png" usemap="#mymap" alt="Map of Levels"
             style="
             margin-top: 4.5rem;
             height: 41.5rem; 
             position: absolute;
             top: 0px;
             z-index: -1;"/>
-            <div id="level1btn" 
-            onclick="goToLevel1()"
+            <a href="level1welcomepage.html"><div id="gameredirect"
             style="
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             position: relative;
-            top: 275px; right: 150px;"
-            ></div>
+            top: 255px; right: 138px;"
+            ></div></a>
+            <a href="level2welcome.html"><div id="gameredirect"
+              style="
+              width: 35px;
+              height: 35px;
+              position: relative;
+              top: 168px; right: -25px;"
+              ></div></a>
+              <a href="level3welcome.html"><div id="gameredirect"
+                style="
+                width: 35px;
+                height: 35px;
+                position: relative;
+                top: 237px; right: -154.5px;"
+                ></div></a>
         </div>
-        
+
 
     </body>
+
 </html>

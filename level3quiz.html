@@ -3,15 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Level 3</title>
-    <link rel="stylesheet" href="puzzle.css">
+    <link rel="stylesheet" href="vocalno.css">
 </head>
 <body>
-<div>
-    <h1>Explore the volcano!  </h1>
-    <!-- Volcano -->
-    <img id="volcano-image" src="images/volcano1.jpg" alt="before">
-    <img id="bakingsode-image" src="images/bakingsoda.jpg" alt="bakingsoda">
-</div>
-
+    <div>
+        <h1>Explore the volcano!  </h1>
+        </div>
+        <div id="images">
+            <img id="bakingsoda-image" src="images/bakingsoda.png" alt="bakingsoda">
+            <img id="vinegar-img" src="images/vinegar.png" alt="vinegar bottle">
+            <img id="volcano-image" src="images/volcano1.jpg" alt="volcano">
+            <svg id="lava" viewBox="0 -200 800 800" width="800" height="800">
+                <!-- Lava element (a circle) -->
+                <rect id="main" width="100" height="100" x="410" y="170" transform="translate(0, -50)" rx="20" ry="20" fill="orange" />
+                <rect id="bakingsoda" width="20" height="10" x="450" y="-175" rx="20" ry="20" fill="#FFF8DC" />  
+                <rect id="vinegar-flow" width="10" height="10" x="460" y="-175" rx="20" ry="20" fill="#FFC300" />  
+            </svg>
+        </div>
+        <button id="playbutton">Play</button>
+        <button id="restartbutton">Restart</button>
+    </div>
+    <script>
+        //image elements
+        const element1 = document.getElementById('bakingsoda-image')
+        const element2 = document.getElementById('vinegar-img')
+        const element3 = document.getElementById('main')
+        const element4 = document.getElementById('bakingsoda')
+        const element5 = document.getElementById('vinegar-flow')
+        //button  elements
+        const playButton = document.getElementById('playbutton')
+        const restartButton = document.getElementById('restartbutton')
+        // Add event listeners for the baking soda image
+        playButton.addEventListener('click', () => element1.style.animationPlayState = "running")
+        // Add event listeners for the vinegar image
+        playButton.addEventListener('click', () => element2.style.animationPlayState = "running")
+        // Add event listeners for the lava
+        playButton.addEventListener('click', () => element3.style.animationPlayState = "running")
+        // Add event listeners for the flowing baking soda
+        playButton.addEventListener('click', () => element4.style.animationPlayState = "running")
+        // Add event listeners for the flowing vinegar
+        playButton.addEventListener('click', () => element5.style.animationPlayState = "running")
+        // replay animation
+        const replayAnimations = () => {
+            document.getAnimations().forEach((anim) => {
+                anim.cancel();
+                anim.play();
+            });
+        };
+        restartButton.addEventListener('click', replayAnimations)
+    </script>
 </body>
 </html>
